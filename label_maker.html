@@ -262,8 +262,12 @@ const previewArea = document.getElementById('preview-area');
 const parseBtn = document.getElementById('parse-btn');
 
 fileInput.addEventListener('change', e => {
-  [...e.target.files].forEach(addFile);
-  parseBtn.disabled = uploadedFiles.length === 0;
+  const files = [...e.target.files];
+  if (files.length > 0) {
+    files.forEach(addFile);
+    parseBtn.disabled = false;
+    parseBtn.style.background = '#1a6faf';
+  }
 });
 
 // drag & drop
