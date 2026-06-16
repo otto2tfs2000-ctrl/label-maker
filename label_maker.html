@@ -66,7 +66,15 @@ header p { font-size: 13px; opacity: 0.8; margin-top: 2px; }
   position: relative;
 }
 .upload-zone:hover { background: #e8f3ff; }
-.upload-zone input { position:absolute; inset:0; opacity:0; cursor:pointer; }
+.upload-zone input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+}
 .upload-icon { font-size: 40px; margin-bottom: 10px; }
 .upload-hint { font-size: 14px; color: #666; line-height: 1.7; }
 .upload-hint strong { color: #1a6faf; }
@@ -192,15 +200,13 @@ table.data-table td input:focus {
   <div class="step">
     <div class="step-title"><span class="step-num">1</span> 上傳商品資料照片（可一次多張）</div>
     <div class="upload-zone" id="upload-zone">
-      <label for="file-input" style="display:block;cursor:pointer;width:100%;height:100%;">
-        <div class="upload-icon">📷</div>
-        <div class="upload-hint">
-          點擊這裡選擇照片<br>
-          支援 <strong>JPG / PNG / HEIC</strong>，可同時上傳多張<br>
-          （商品外箱、說明書、進口商標籤 都可以）
-        </div>
-      </label>
-      <input type="file" id="file-input" accept="image/*" multiple style="position:absolute;opacity:0;width:1px;height:1px;">
+      <input type="file" id="file-input" accept="image/*,image/heic,image/heif" multiple>
+      <div class="upload-icon">📷</div>
+      <div class="upload-hint">
+        點擊這裡選擇照片<br>
+        支援 <strong>JPG / PNG / HEIC</strong>，可同時上傳多張<br>
+        （商品外箱、說明書、進口商標籤 都可以）
+      </div>
     </div>
     <div id="preview-area"></div>
     <div class="btn-row">
@@ -282,7 +288,7 @@ zone.addEventListener('drop', e => {
 });
 
 function addFile(file) {
-  if (!file.type.startsWith('image/')) return;
+  if (!file) return;
   const id = Date.now() + Math.random();
   uploadedFiles.push({ id, file });
   const div = document.createElement('div');
