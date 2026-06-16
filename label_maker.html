@@ -104,11 +104,29 @@ const FIXED = {
   phone:"04-22523711", origin:"中國", mfg:"詳見外包裝", exp:"三年", age:"3歲以上"
 };
 
+
+// ===== 預載入9件商品資料 =====
+const PRELOADED_PRODUCTS = [
+  {name:"6色輕黏土組", en:"Air-Dry Clay Kit", maker:"Zhejiang Xiangyuan Stationery Co., Ltd.", ingredients:"黏土、水、色料、黏著劑", usage:"黏土造型創作", note:"避免吞食，使用後請密封保存。"},
+  {name:"12色水洗蠟筆", en:"12 Paint Sticks", maker:"Wingart Group Co., Ltd.", ingredients:"顏料、蠟質材料、塑膠外殼", usage:"兒童繪畫與著色", note:"避免陽光直射及高溫環境。"},
+  {name:"24色疊色怪獸", en:"24 Acrylic Markers", maker:"Wingart Group Co., Ltd.", ingredients:"壓克力顏料、水性墨水、PP塑膠", usage:"紙張、木材、石材、帆布彩繪", note:""},
+  {name:"48色疊色怪獸", en:"48 Acrylic Markers", maker:"Wingart Group Co., Ltd.", ingredients:"壓克力顏料、水性墨水、PP塑膠", usage:"紙張、木材、石材、帆布彩繪", note:""},
+  {name:"72色疊色怪獸", en:"72 Acrylic Markers", maker:"Wingart Group Co., Ltd.", ingredients:"壓克力顏料、水性墨水、PP塑膠", usage:"紙張、木材、石材、帆布彩繪", note:""},
+  {name:"50色炫彩精靈水彩組", en:"50 Colors Solid Watercolor Paint Set", maker:"Wingart Group Co., Ltd.", ingredients:"水彩顏料、阿拉伯膠", usage:"水彩繪畫創作", note:""},
+  {name:"100色炫彩精靈水彩組", en:"100 Colors Solid Watercolor Paint Set", maker:"Wingart Group Co., Ltd.", ingredients:"水彩顏料、阿拉伯膠", usage:"水彩繪畫創作", note:""},
+  {name:"72色線條魔法師", en:"72 Dual Fineliner Brush Pens", maker:"Wingart Group Co., Ltd.", ingredients:"水性墨水、PP塑膠、聚酯纖維筆頭", usage:"插畫、手帳、著色創作", note:""},
+  {name:"疊色小象60色直液式<br>壓克力彩繪筆", en:"60 Acrylic Paint Markers", maker:"Wingart Group Co., Ltd.", ingredients:"壓克力顏料、水性墨水、PP塑膠", usage:"紙張、木材、石材、帆布彩繪", note:""},
+];
+
 let uploadedFiles = [];
 let tableData = [];
 
 // 上傳
 const fileInput = document.getElementById('file-input');
+// 自動載入預設資料
+renderTable(PRELOADED_PRODUCTS);
+document.getElementById('step2').style.display = 'block';
+
 fileInput.onchange = function() {
   const files = Array.from(this.files);
   files.forEach(f => {
