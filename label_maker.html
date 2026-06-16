@@ -142,13 +142,10 @@ document.getElementById('parse-btn').onclick = async function() {
       return { type:"image", source:{ type:"base64", media_type: f.type || 'image/jpeg', data:b64 } };
     }));
 
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
+    const res = await fetch("https://line-ai-helper-production.up.railway.app/api/claude", {
       method:"POST",
       headers:{
         "Content-Type":"application/json",
-        "x-api-key": API_KEY,
-        "anthropic-version":"2023-06-01",
-        "anthropic-dangerous-direct-browser-access":"true"
       },
       body: JSON.stringify({
         model:"claude-sonnet-4-6",
