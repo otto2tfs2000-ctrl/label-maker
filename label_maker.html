@@ -191,8 +191,8 @@ table.data-table td input:focus {
   <!-- STEP 1: 上傳照片 -->
   <div class="step">
     <div class="step-title"><span class="step-num">1</span> 上傳商品資料照片（可一次多張）</div>
-    <div class="upload-zone" id="upload-zone">
-      <input type="file" id="file-input" accept="image/*" multiple>
+    <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+      <input type="file" id="file-input" accept="image/*" multiple style="display:none">
       <div class="upload-icon">📷</div>
       <div class="upload-hint">
         點擊或拖曳照片到這裡<br>
