@@ -178,7 +178,7 @@ document.getElementById('parse-btn').onclick = async function() {
 
     st.className = 'status show success';
     st.textContent = `✅ 成功解析 ${products.length} 件商品`;
-    renderTable(products);
+    products.forEach(p => addRow(p));
     document.getElementById('step2').style.display = 'block';
     document.getElementById('step2').scrollIntoView({behavior:'smooth'});
 
