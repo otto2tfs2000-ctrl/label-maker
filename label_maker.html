@@ -96,8 +96,6 @@ table td input:focus { border-bottom:1.5px solid #1a6faf; }
 </div>
 
 <script>
-const API_KEY = "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";
-
 const FIXED = {
   importer:"美林藝術文創股份有限公司", ubn:"12707656",
   address:"407臺中市西屯區潮洋里臺灣大道三段789號22樓之2",
@@ -160,7 +158,7 @@ document.getElementById('parse-btn').onclick = async function() {
       return { type:"image", source:{ type:"base64", media_type: f.type || 'image/jpeg', data:b64 } };
     }));
 
-    const res = await fetch("https://line-ai-helper-production.up.railway.app/api/claude", {
+    const res = await fetch("https://label-maker-api-production.up.railway.app/api/claude", {
       method:"POST",
       headers:{
         "Content-Type":"application/json",
